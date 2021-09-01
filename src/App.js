@@ -1,13 +1,23 @@
-import classes from './App.module.scss';
-import Loader from './components/Loader/Loader';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { useFetchData } from './data/useFetch.Data';
-import MainLayout from './Layouts/MainLayout/MainLayout';
+import CompetionsCalendar from './pages/CompetionsCalendar/CompetionsCalendar';
+import TeamsList from './pages/TeamsList/TeamsList';
+import TeamCalendar from './pages/TeamCalendar/TeamCalendar';
+import MainPage from './pages/MainPage/MainPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
-  const { data, isLoading } = useFetchData();
-
-  return <div>{isLoading ? <Loader /> : <MainLayout data={data} />}</div>;
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={MainPage} exact />
+        <Route path="/calendar" component={CompetionsCalendar} />
+        <Route path="/teams" component={TeamsList} />
+        <Route path="/team/calendar" component={TeamCalendar} />
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;

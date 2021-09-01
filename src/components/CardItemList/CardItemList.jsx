@@ -72,7 +72,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardItemList() {
+export default function CardItemList({ setApiUrl }) {
   const classes = useStyles();
 
   return (
@@ -85,6 +85,7 @@ export default function CardItemList() {
             title={el.country}
             id={el.id}
             imgSrc={el.img}
+            setApiUrl={setApiUrl}
           />
         );
       })}
