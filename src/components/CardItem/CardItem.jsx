@@ -29,26 +29,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardItem({ id, name, title, imgSrc, setApiUrl }) {
+export default function CardItem({ id, name, title, imgSrc }) {
   const classes = useStyles();
-
-  const showListTeams = (e) => {
-    // console.log(e);
-    e.preventDefault();
-    setApiUrl(`http://api.football-data.org/v2/competitions/${id}/teams`);
-  };
-
-  const showCalendarTeams = (e) => {
-    e.preventDefault();
-    setApiUrl(`http://api.football-data.org/v2/competitions/${id}/matches`);
-  };
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.card}
-          alt="Brazil Seria A"
+          alt={name}
           image={imgSrc}
           title={name}
         />
@@ -72,12 +61,8 @@ export default function CardItem({ id, name, title, imgSrc, setApiUrl }) {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.cards}>
-        <NavLink to="/calendar" onClick={showCalendarTeams}>
-          Календарь
-        </NavLink>
-        <NavLink to="/teams" onClick={showListTeams}>
-          Команды
-        </NavLink>
+        <NavLink to={`/calendar/${id}`}>Календарь</NavLink>
+        <NavLink to={`/teams/${id}`}>Команды</NavLink>
       </CardActions>
     </Card>
   );

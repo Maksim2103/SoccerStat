@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
+import { authToken } from './authToken';
 
-// const baseApiUrl = 'http://api.football-data.org/v2/competitions/2000';
-// const baseApiUrl = 'http://api.football-data.org/v2/competitions/2021/teams';
-
-export const useFetchData = () => {
-  const [apiUrl, setApiUrl] = useState('');
+export const useFetchData = (apiUrl) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +10,7 @@ export const useFetchData = () => {
       try {
         setIsLoading(true);
         const response = await fetch(apiUrl, {
-          headers: { 'X-Auth-Token': '3fb225e644984a36a20c61e950d829a3' },
+          headers: authToken,
         });
         const results = await response.json();
         setData(results);
@@ -28,6 +25,5 @@ export const useFetchData = () => {
   return {
     data,
     isLoading,
-    apiUrl,
   };
 };

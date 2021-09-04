@@ -2,7 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import CardItem from '../CardItem/CardItem';
+import TeamCardItem from '../TeamCardItem/TeamCardItem';
 
 const useStyles = makeStyles({
   root: {
@@ -12,19 +12,18 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardItemList({ data }) {
+export default function TeamList({ data }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       {data.map((el) => {
         return (
-          <CardItem
+          <TeamCardItem
             key={el.id}
             name={el.name}
-            title={el.area.name}
+            imgSrc={el.crestUrl}
             id={el.id}
-            imgSrc={el.emblemUrl}
           />
         );
       })}

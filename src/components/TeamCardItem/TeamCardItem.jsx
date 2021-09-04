@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -31,13 +31,14 @@ const useStyles = makeStyles({
 
 export default function TeamCardItem({ id, name, title, imgSrc }) {
   const classes = useStyles();
+  console.log(id);
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.card}
-          alt="Brazil Seria A"
+          alt={name}
           image={imgSrc}
           title={name}
         />
@@ -53,7 +54,7 @@ export default function TeamCardItem({ id, name, title, imgSrc }) {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.cards}>
-        <Link to="/team/calendar">Календарь</Link>
+        <NavLink to={`/team/${id}/calendar/`}>Календарь</NavLink>
       </CardActions>
     </Card>
   );

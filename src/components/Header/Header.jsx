@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,10 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+          <Link to="/">home</Link>
+          <Link to="/teams/2003">teams</Link>
+          <Link to="/calendar/2003">calendar</Link>
+          <Link to="/calendarTeam/2003/1">calendarTeam</Link>
           <Typography className={classes.title} variant="h6" noWrap>
             SoccerStat
           </Typography>

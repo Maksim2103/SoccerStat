@@ -1,20 +1,24 @@
+// import classes from './App.module.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import CompetionsCalendar from './pages/CompetionsCalendar/CompetionsCalendar';
-import TeamsList from './pages/TeamsList/TeamsList';
-import TeamCalendar from './pages/TeamCalendar/TeamCalendar';
+import Header from './components/Header/Header';
 import MainPage from './pages/MainPage/MainPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import TeamsPage from './pages/TeamsPage/TeamsPage';
+import CalendarCompetitionsPage from './pages/CalendarCompetitionsPage/CalendarCompetitionsPage';
+import CalendarTeamPage from './pages/CalendarTeamPage/CalendarTeamPage';
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route path="/" component={MainPage} exact />
-        <Route path="/calendar" component={CompetionsCalendar} />
-        <Route path="/teams" component={TeamsList} />
-        <Route path="/team/calendar" component={TeamCalendar} />
-        <Route path="*" component={NotFoundPage} />
+        <Route path="/teams/:idChampionat" component={TeamsPage} />
+        <Route
+          path="/calendar/:idChampionat"
+          component={CalendarCompetitionsPage}
+        />
+        <Route path="/team/:idTeam/calendar" component={CalendarTeamPage} />
       </Switch>
     </BrowserRouter>
   );
