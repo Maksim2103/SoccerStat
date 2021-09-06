@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +13,7 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
+    fontSize: 16,
   },
   body: {
     fontSize: 14,
@@ -40,27 +42,29 @@ export default function TeamCalendar({ data }) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="right">MatchDay&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">Date&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">Status&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">homeTeam&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">awayTeam&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">score&nbsp;</StyledTableCell>
+            <StyledTableCell size="small" align="center">
+              MatchDay&nbsp;
+            </StyledTableCell>
+            <StyledTableCell align="center">Date&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Status&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Home Team&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Away Team&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Score&nbsp;</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
             <StyledTableRow key={row.id}>
-              <StyledTableCell align="right">{row.matchday}</StyledTableCell>
-              <StyledTableCell align="right">{row.utcDate}</StyledTableCell>
-              <StyledTableCell align="right">{row.status}</StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">{row.matchday}</StyledTableCell>
+              <StyledTableCell align="center">{row.utcDate}</StyledTableCell>
+              <StyledTableCell align="center">{row.status}</StyledTableCell>
+              <StyledTableCell align="center">
                 {row.homeTeam.name}
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">
                 {row.awayTeam.name}
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">
                 {`${row.score.fullTime.homeTeam}:${row.score.fullTime.awayTeam}`}
               </StyledTableCell>
             </StyledTableRow>

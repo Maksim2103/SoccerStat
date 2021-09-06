@@ -1,6 +1,6 @@
-// import classes from './App.module.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import Box from '@material-ui/core/Box';
 import Header from './components/Header/Header';
 import MainPage from './pages/MainPage/MainPage';
 import TeamsPage from './pages/TeamsPage/TeamsPage';
@@ -11,15 +11,17 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Switch>
-        <Route path="/" component={MainPage} exact />
-        <Route path="/teams/:idChampionat" component={TeamsPage} />
-        <Route
-          path="/calendar/:idChampionat"
-          component={CalendarCompetitionsPage}
-        />
-        <Route path="/team/:idTeam/calendar" component={CalendarTeamPage} />
-      </Switch>
+      <Box padding={3}>
+        <Switch>
+          <Route path="/" component={MainPage} exact />
+          <Route path="/teams/:idChampionat" component={TeamsPage} />
+          <Route
+            path="/calendar/:idChampionat"
+            component={CalendarCompetitionsPage}
+          />
+          <Route path="/team/:idTeam/calendar" component={CalendarTeamPage} />
+        </Switch>
+      </Box>
     </BrowserRouter>
   );
 }

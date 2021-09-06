@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,9 +30,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TeamCardItem({ id, name, title, imgSrc }) {
+export default function TeamCardItem({ id, name, imgSrc }) {
   const classes = useStyles();
-  console.log(id);
 
   return (
     <Card className={classes.root}>
@@ -39,7 +39,7 @@ export default function TeamCardItem({ id, name, title, imgSrc }) {
         <CardMedia
           className={classes.card}
           alt={name}
-          image={imgSrc}
+          image={imgSrc || '/assets/defaultLogo.png'}
           title={name}
         />
         <CardContent>

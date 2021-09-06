@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -38,7 +38,7 @@ export default function CardItem({ id, name, title, imgSrc }) {
         <CardMedia
           className={classes.card}
           alt={name}
-          image={imgSrc}
+          image={imgSrc || '/assets/defaultLogo.png'}
           title={name}
         />
         <CardContent>

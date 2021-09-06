@@ -1,31 +1,19 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: 'center',
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.primary.main, 0.15),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.primary.main, 0.25),
     },
     marginLeft: 0,
     width: '100%',
@@ -48,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -59,28 +46,28 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '18px',
-  },
 }));
 
-export default function SearchAppBar() {
+export default function InputSearch({ inputValue, handleOnchangeValue }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Link className={classes.link} color="red" to="/">
-            Main
-          </Link>
-          <Typography className={classes.title} variant="h6" noWrap>
-            SoccerStat
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
+        </div>
+        <InputBase
+          fullWidth
+          value={inputValue}
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ 'aria-label': 'search' }}
+          onChange={handleOnchangeValue}
+        />
+      </div>
     </div>
   );
 }
